@@ -1,8 +1,9 @@
 # Version 3 is focused for Swarm mode --> Manage a cluster of Docker Engines natively, if you do not want to use Swarm mode then Version 2 is the correct --> https://github.com/docker/compose/issues/4513
 version: '2'
 services:
-  counter-request-service:
-    build: counter-request-service
+  counter-service:
+    build: counter-service
     mem_limit: 512M
     ports:
-      - "8080:8080"
+      #  Machine port: Docker port
+      - "8081:8080"
