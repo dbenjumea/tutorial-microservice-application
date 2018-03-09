@@ -1,5 +1,7 @@
 package com.dbenjumea.tutorial_microservices.counterservice.api;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +12,11 @@ import java.util.concurrent.atomic.AtomicLong;
  * count of request made
  */
 @RestController
+@RefreshScope
 public class CounterController {
+
+    @Value(value = "${counter.prefixMessage}")
+    private String prefixMessage;
 
     // We use AtomicLong for making count thread-safe
     private static AtomicLong counter = new AtomicLong(0);
@@ -24,8 +30,8 @@ public class CounterController {
      * @return count
      */
     @GetMapping(path = "/count")
-    public long getCount(){
-        return counter.getAndIncrement();
+    public String getCount(){
+        return prefixMessage + counter.getAndIncrement();
     }
 
 }
