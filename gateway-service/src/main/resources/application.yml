@@ -1,3 +1,10 @@
-zuul.routes.counter.url=http://localhost:8090
-ribbon.eureka.enabled=false
-server.port=8080
+server:
+  port: 8080
+zuul:
+  routes:
+    users:
+      path: /counter/**
+      url: http://localhost:8090
+ribbon:
+  eureka:
+    enabled: false
