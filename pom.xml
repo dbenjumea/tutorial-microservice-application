@@ -13,6 +13,7 @@
     <modules>
         <module>config-service</module>
         <module>counter-service</module>
+        <module>registry-service</module>
         <module>gateway-service</module>
     </modules>
 </project>
